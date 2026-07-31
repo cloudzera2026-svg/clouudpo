@@ -163,15 +163,15 @@ ul { list-style: none; padding: 0; }
   backdrop-filter: blur(16px) saturate(160%);
   border-bottom-color: var(--glass-brd);
 }
-.nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-width: 0; }
 .brand { display: flex; align-items: center; gap: .6rem; font-weight: 800; letter-spacing: .5px; }
 .brand img { width: 34px; height: 34px; border-radius: 9px; object-fit: cover; }
 .brand span b { color: var(--accent); }
 .nav-links { display: none; align-items: center; gap: 1.6rem; }
 .nav-links a { color: var(--muted); font-size: .92rem; font-weight: 500; transition: color .2s; }
 .nav-links a:hover { color: var(--text); }
-.nav-cta { display: none; }
-.burger { display: inline-flex; flex-direction: column; gap: 5px; padding: 10px; border-radius: 10px; }
+.btn.nav-cta { display: none; }
+.burger { display: inline-flex; flex: 0 0 42px; flex-direction: column; gap: 5px; padding: 10px; border-radius: 10px; }
 .burger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .3s, opacity .3s; }
 .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .burger.open span:nth-child(2) { opacity: 0; }
@@ -332,7 +332,8 @@ ul { list-style: none; padding: 0; }
 .reviews-track {
   display: grid; grid-auto-flow: column; grid-auto-columns: 85%;
   gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 6px 20px 20px; margin: 0 -20px;
+  width: 100%; max-width: 100%; min-width: 0;
+  padding: 6px 20px 20px; margin: 0;
   scrollbar-width: none;
 }
 .reviews-track::-webkit-scrollbar { display: none; }
@@ -484,6 +485,27 @@ ul { list-style: none; padding: 0; }
 /* ==========================================================================
    Responsivo
    ========================================================================== */
+@media (max-width: 639px) {
+  .container { padding-inline: 16px; }
+  .nav .container { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .brand { min-width: 0; }
+  .burger { justify-self: end; }
+
+  .hero h1 { font-size: clamp(2.5rem, 13vw, 4rem); }
+  .hero-badge { max-width: 100%; justify-content: center; text-align: center; }
+  .hero-actions .btn { flex: 1 1 150px; min-width: 0; padding-inline: 16px; white-space: normal; }
+
+  .trust-strip .container { padding-inline: 16px; gap: 12px 20px; }
+  .trust-item { font-size: .84rem; }
+  .about-card { padding-inline: 18px; }
+  .row-2 { grid-template-columns: 1fr; }
+
+  .modal-backdrop { padding-bottom: env(safe-area-inset-bottom); }
+  .modal { max-height: calc(100dvh - env(safe-area-inset-top)); }
+  .modal-foot { padding-bottom: max(22px, env(safe-area-inset-bottom)); }
+  .wa-float { bottom: max(18px, calc(18px + env(safe-area-inset-bottom))); }
+}
+
 @media (min-width: 640px) {
   .products-grid { grid-template-columns: repeat(2, 1fr); }
   .reviews-track { grid-auto-columns: 46%; }
@@ -491,7 +513,7 @@ ul { list-style: none; padding: 0; }
 }
 @media (min-width: 900px) {
   .nav-links { display: flex; }
-  .nav-cta { display: inline-flex; }
+  .btn.nav-cta { display: inline-flex; }
   .burger { display: none; }
   .products-grid { grid-template-columns: repeat(3, 1fr); }
   .about-grid { grid-template-columns: 1.1fr .9fr; }
