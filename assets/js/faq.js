@@ -1,8 +1,8 @@
 /* FAQ — gerado pelo painel */
 window.FAQ = [
   {
-    "q": "Qual o prazo de entrega?",
-    "a": "Depende da sua região! Trabalhamos com Entrega Expressa (envio em minutos via app com rastreio no WhatsApp) e a Normal (motoboy em horários fixos)."
+    "q": "Quanto custa a entrega?",
+    "a": "Depende da sua região! Faremos a cotação conforme o endereço informado, trabalhamos com Entrega Expressa (envio em minutos via app com rastreio no WhatsApp)"
   },
   {
     "q": "Os produtos são originais?",
