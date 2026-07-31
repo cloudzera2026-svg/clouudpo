@@ -21,7 +21,7 @@ window.DEPOIMENTOS = [
   {
     "nome": "Camila Omena",
     "local": "Poço",
-    "nota": 4,
+    "nota": 5,
     "texto": "Chegou certinho e bem embalado. Só demorou um pouquinho mais que o previsto, mas o produto é top."
   },
   {
