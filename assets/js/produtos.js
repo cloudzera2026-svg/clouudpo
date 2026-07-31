@@ -44,7 +44,7 @@ window.PRODUTOS = [
     id: "elfbar-king-40k",
     nome: "Elfbar King — 40.000 Puffs",
     descricao: "40 mil puffs com seletor de potência (Turbo 1, 2 e 3). Alta duração, sabores frutados, gelados, mentolados e misturas premium.",
-    imagem: "assets/img/elfbar-king-40k.webp",
+    imagem: "assets/img/elfbar-king-40k.png",
     precoDe: 599.80,
     preco: 269.90,
     badge: "MAIS VENDIDO",
