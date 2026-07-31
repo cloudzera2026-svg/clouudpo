@@ -1,67 +1,50 @@
 /* PRODUTOS — gerado pelo painel */
 window.PRODUTOS = [
   {
+    "id": "ignite-v250",
+    "nome": "Ignite V250 — 25.000 Puffs",
+    "descricao": "Pod descartável de alta duração, até 25.000 puffs, com desempenho estável e sabor consistente do começo ao fim.",
+    "imagem": "assets/img/ignite-v250.png",
+    "precoDe": 109.99,
+    "preco": 99.99,
+    "badge": "MAIS VENDIDO",
+    "destaque": false,
+    "sabores": [
+      "Icy Mint",
+      "Grape Ice",
+      "Strawberry Ice",
+      "Watermelon Ice",
+      "Strawberry Banana"
+    ],
+    "ativo": true
+  },
+  {
     "id": "elfbar-bc15k",
     "nome": "Elfbar BC15K — 15.000 Puffs",
-    "descricao": "A linha custo beneficio da marca, para você que procura a melhor opção e preço baixo. Qualidade ELFBAR.",
-    "imagem": "assets\\img\\elfbar-bc15k.png",
+    "descricao": "15 mil puffs de alta duração, com sabores frutados, gelados (ice), mentolados e misturas premium.",
+    "imagem": "assets/img/elfbar-bc15k.png",
     "precoDe": 89.99,
     "preco": 69.99,
-    "badge": "MAIS VENDIDOS",
-    "destaque": true,
+    "badge": "QUERIDINHO",
+    "destaque": false,
     "sabores": [
       "Ice Mint",
       "Sakura Grape",
       "Watermelon Ice",
-      "Strawberry Kiwi",
       "Strawberry Watermelon",
       "Peach Mango Watermelon"
     ],
     "ativo": true
   },
   {
-    "id": "ignite-v250",
-    "nome": "Ignite V250 — 25.000 Puffs 𝗘𝗦𝗚𝗢𝗧𝗔𝗗𝗢",
-    "descricao": "O modelo mais atemporal que existe, nosso V250, modelo mais bem desenvolvido da marca. Qualidade IGNITE.",
-    "imagem": "assets\\img\\ignite-v250.png",
-    "precoDe": 119.99,
-    "preco": 99.99,
-    "badge": "MAIS VENDIDOS",
-    "destaque": true,
-    "sabores": [
-      "Icy Mint",
-      "Grape Ice",
-      "Watermelon Ice",
-      "Strawberry Ice",
-      "Strawberry Kiwi",
-      "Strawberry Banana"
-    ],
-    "ativo": true
-  },
-  {
-    "id": "produto-5",
-    "nome": "Elfbar Duke — 35.000 Puffs",
-    "descricao": "A novidade do momento, modelo sofisticado e atualizado. Qualidade ELFBAR.",
-    "imagem": "assets\\img\\elfduke-35k.png",
-    "preco": 124.99,
-    "sabores": [
-      "Grape Ice",
-      "Watermelon Ice",
-      "Coconut Strawberry Ice"
-    ],
-    "ativo": true,
-    "precoDe": 139.99,
-    "badge": "NOVO"
-  },
-  {
     "id": "elfbar-king-40k",
-    "nome": "Elfbar King — 40.000 Puffs 𝗘𝗦𝗚𝗢𝗧𝗔𝗗𝗢",
-    "descricao": "O queridinho da marca, modelo atemporal, marcando época. Qualidade ELFBAR.",
-    "imagem": "assets\\img\\elfbar-king-40k.png",
-    "precoDe": 124.99,
+    "nome": "Elfbar King — 40.000 Puffs",
+    "descricao": "40 mil puffs com seletor de potência (Turbo 1, 2 e 3). Alta duração, sabores frutados, gelados, mentolados e misturas premium.",
+    "imagem": "assets/img/elfbar-king-40k.png",
+    "precoDe": 129.99,
     "preco": 114.99,
-    "badge": "QUERIDINHO",
-    "destaque": false,
+    "badge": "MAIS VENDIDO",
+    "destaque": true,
     "sabores": [
       "ESGOTADO!"
     ],
@@ -69,17 +52,15 @@ window.PRODUTOS = [
   },
   {
     "id": "ignite-v400",
-    "nome": "Ignite V400 Mix — 40.000 Puffs 𝗘𝗦𝗚𝗢𝗧𝗔𝗗𝗢",
-    "descricao": "Dual-Flavor: Dois sabores em um só dispositivo. Qualidade IGNITE.",
-    "imagem": "assets\\img\\ignite-v400.png",
-    "precoDe": 124.99,
+    "nome": "Ignite V400 Mix — 40.000 Puffs",
+    "descricao": "Pod descartável Dual-Flavor: dois sabores em um só dispositivo, com até 40.000 puffs.",
+    "imagem": "assets/img/ignite-v400.png",
+    "precoDe": 129.99,
     "preco": 114.99,
-    "badge": "DOIS SABORES",
+    "badge": "NOVO",
     "destaque": false,
     "sabores": [
-      "Grape Pop+Peach Ice",
-      "Grape Ice+Watermelon Ice",
-      "Watermelon Ice+Cherry Ice"
+      "ESGOTADO!"
     ],
     "ativo": true
   }
