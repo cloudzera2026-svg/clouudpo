@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Painel · Cloud Pods</title>
+  <style>
+    :root { --bg:#0a0b0e; --surf:#14161c; --brd:rgba(255,255,255,.12); --txt:#f4f4f5; --mut:#a1a1aa; --ac:#2dd4bf; --dg:#f43f5e; }
+    * { box-sizing:border-box; margin:0; }
+    body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--txt); line-height:1.5; }
+    input, select, textarea, button { font:inherit; color:inherit; }
+    a { color:var(--ac); }
+
+    /* gate */
+    #gate { position:fixed; inset:0; display:none; place-items:center; background:var(--bg); padding:24px; z-index:10; }
+    .gate-card { max-width:360px; width:100%; background:var(--surf); border:1px solid var(--brd); border-radius:18px; padding:30px; text-align:center; }
+    .gate-card h1 { font-size:1.4rem; margin-bottom:6px; }
+    .gate-card p { color:var(--mut); font-size:.9rem; margin-bottom:18px; }
+    .gate-card input { width:100%; padding:13px; border-radius:10px; background:#0e1014; border:1px solid var(--brd); margin-bottom:12px; }
+    #gateErr { display:none; color:var(--dg); font-size:.85rem; margin-bottom:10px; }
+
+    /* app */
+    #app { display:none; max-width:900px; margin:0 auto; padding:20px 16px 80px; }
+    header.top { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0 18px; border-bottom:1px solid var(--brd); margin-bottom:18px; flex-wrap:wrap; }
+    header.top h1 { font-size:1.3rem; }
+    header.top .sub { color:var(--mut); font-size:.82rem; }
+    .top-actions { display:flex; gap:8px; flex-wrap:wrap; }
+    .save-status { font-size:.82rem; color:var(--ac); margin-top:4px; font-weight:600; }
+    .save-status.dirty { color:#fbbf24; }
+    .export-label { color:var(--mut); font-size:.82rem; align-self:center; margin-right:2px; }
+    .toast { position:fixed; left:50%; bottom:74px; transform:translateX(-50%) translateY(20px); z-index:20;
+      max-width:92vw; background:var(--ac); color:#04120f; font-weight:600; font-size:.88rem;
+      padding:12px 18px; border-radius:12px; box-shadow:0 12px 30px rgba(0,0,0,.5);
+      opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; text-align:center; }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .tabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px; }
+    .tab { padding:10px 16px; border-radius:999px; background:var(--surf); border:1px solid var(--brd); color:var(--mut); cursor:pointer; }
+    .tab.on { background:var(--ac); color:#04120f; border-color:transparent; font-weight:700; }
+    .panel { display:none; }
+    .panel.on { display:block; }
+
+    .item { background:var(--surf); border:1px solid var(--brd); border-radius:14px; padding:16px; margin-bottom:14px; }
+    .item-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:12px; }
+    .item-head b { font-size:1rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .item-actions { display:flex; gap:6px; flex:none; }
+    .mini { width:32px; height:32px; border-radius:8px; background:#0e1014; border:1px solid var(--brd); cursor:pointer; }
+    .mini.danger { color:var(--dg); border-color:rgba(244,63,94,.4); }
+    .fld { margin-bottom:10px; display:flex; flex-direction:column; gap:5px; }
+    .fld label { font-size:.78rem; color:var(--mut); font-weight:600; }
+    .fld input, .fld select, .fld textarea, .frete-row input { width:100%; padding:11px 12px; border-radius:10px; background:#0e1014; border:1px solid var(--brd); }
+    .fld textarea { min-height:66px; resize:vertical; }
+    .fld input:focus, .fld textarea:focus, .fld select:focus { outline:none; border-color:var(--ac); }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+    .checks { display:flex; gap:18px; flex-wrap:wrap; margin-top:4px; }
+    .chk { display:flex; align-items:center; gap:8px; font-size:.9rem; color:var(--txt); cursor:pointer; }
+    .chk input { width:18px; height:18px; }
+    .media-row { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+    .thumb { width:64px; height:64px; object-fit:contain; background:#0e1014; border:1px solid var(--brd); border-radius:10px; padding:4px; }
+    .upload { font-size:.82rem; color:var(--mut); border:1px dashed var(--brd); padding:10px 12px; border-radius:10px; cursor:pointer; flex:1; }
+    .upload input { display:none; }
+    .frete-row { display:grid; grid-template-columns:1fr 90px 1fr 32px; gap:8px; margin-bottom:8px; align-items:center; }
+
+    .btn { padding:12px 18px; border-radius:10px; background:var(--ac); color:#04120f; font-weight:700; border:none; cursor:pointer; }
+    .btn.ghost { background:transparent; color:var(--txt); border:1px solid var(--brd); }
+    .add-row { margin:4px 0 20px; }
+
+    .exportbar { position:fixed; left:0; right:0; bottom:0; background:rgba(10,11,14,.95); border-top:1px solid var(--brd); padding:12px 16px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center; backdrop-filter:blur(10px); z-index:5; }
+    .exportbar .btn { padding:10px 14px; font-size:.9rem; }
+    .help { background:var(--surf); border:1px solid var(--brd); border-radius:14px; padding:16px; color:var(--mut); font-size:.88rem; margin-top:8px; }
+    .help b { color:var(--txt); }
+    .help ol { margin:8px 0 0 18px; display:grid; gap:6px; }
+    @media (max-width:640px){ .grid2,.grid3 { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- Senha -->
+  <div id="gate">
+    <div class="gate-card">
+      <h1>🔒 Painel Cloud Pods</h1>
+      <p>Área restrita. Digite a senha para editar o site.</p>
+      <input id="gatePass" type="password" placeholder="Senha" autocomplete="off" aria-label="Senha do painel">
+      <div id="gateErr">Senha incorreta.</div>
+      <button class="btn" id="gateBtn" style="width:100%">Entrar</button>
+    </div>
+  </div>
+
+  <!-- App -->
+  <div id="app">
+    <header class="top">
+      <div>
+        <h1>Painel Cloud Pods</h1>
+        <div class="save-status" id="saveStatus">✓ Salvo neste navegador</div>
+      </div>
+      <div class="top-actions">
+        <button class="btn" id="save">💾 Salvar</button>
+        <button class="btn ghost" id="verSite">👁 Ver site</button>
+        <button class="btn ghost" id="restore">↩ Restaurar</button>
+        <button class="btn ghost" id="logout">Sair</button>
+      </div>
+    </header>
+
+    <div class="tabs">
+      <button class="tab on" data-tab="prod">Produtos</button>
+      <button class="tab" data-tab="rev">Avaliações</button>
+      <button class="tab" data-tab="faq">FAQ</button>
+      <button class="tab" data-tab="bairros">Bairros</button>
+      <button class="tab" data-tab="cfg">Configurações</button>
+      <button class="tab" data-tab="ajuda">Como usar</button>
+    </div>
+
+    <section class="panel on" id="panel-prod">
+      <div id="prodList"></div>
+      <div class="add-row"><button class="btn ghost" id="addProd">+ Adicionar produto</button></div>
+    </section>
+
+    <section class="panel" id="panel-rev">
+      <div id="revList"></div>
+      <div class="add-row"><button class="btn ghost" id="addRev">+ Adicionar avaliação</button></div>
+    </section>
+
+    <section class="panel" id="panel-faq">
+      <div id="faqList"></div>
+      <div class="add-row"><button class="btn ghost" id="addFaq">+ Adicionar pergunta</button></div>
+    </section>
+
+    <section class="panel" id="panel-bairros">
+      <div class="help" style="margin-bottom:14px">Estes bairros aparecem na lista de <b>bairro</b> quando o cliente finaliza o pedido no checkout. Valor e tempo são opcionais.</div>
+      <div id="freteList"></div>
+      <div class="add-row"><button class="btn ghost" id="addFrete">+ Adicionar bairro</button></div>
+    </section>
+
+    <section class="panel" id="panel-cfg">
+      <div id="cfgBox"></div>
+    </section>
+
+    <section class="panel" id="panel-ajuda">
+      <div class="help">
+        <b>💾 Salvar (prévia)</b>
+        <p style="margin-top:6px">Salva as mudanças <b>neste navegador/aparelho</b>. O site já mostra elas na hora pra você conferir (clique em <b>👁 Ver site</b>). <b>Importante:</b> ninguém além de você vê ainda — é só uma prévia local.</p>
+        <p style="margin-top:10px"><b>↩ Restaurar:</b> descarta a prévia e volta para a versão que está publicada.</p>
+        <b style="display:block;margin-top:16px">🌐 Publicar para todos os clientes</b>
+        <ol>
+          <li>Clique em <b>⬇ Baixar tudo</b> (ou baixe só o que mudou) na barra de baixo.</li>
+          <li>Entre no <b>Gerenciador de Arquivos da Hostinger</b> → pasta <b>assets/js/</b>.</li>
+          <li>Suba os arquivos baixados <b>substituindo</b> os antigos (produtos.js, depoimentos.js, faq.js, config.js).</li>
+          <li>Pronto! Agora todo mundo vê as mudanças ao abrir o site.</li>
+        </ol>
+        <p style="margin-top:12px"><b>Imagens de produto:</b> você pode digitar o caminho (ex.: <code>assets/img/foto.png</code>) e subir a foto na pasta <code>assets/img/</code>, OU usar “Escolher imagem do PC” que embute a foto direto no arquivo (mais fácil, porém deixa o site um pouco mais pesado).</p>
+        <p style="margin-top:12px"><b>Segurança:</b> a senha deste painel é só uma trava leve. Para proteção de verdade, use o recurso <b>“Proteger diretório com senha”</b> do hPanel da Hostinger, ou simplesmente <b>não suba o painel.html</b> e use ele só no seu computador.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="exportbar" id="exportbar" style="display:none">
+    <span class="export-label">Publicar p/ todos:</span>
+    <button class="btn" id="dlAll">⬇ Baixar tudo</button>
+    <button class="btn ghost" id="dlProd">produtos.js</button>
+    <button class="btn ghost" id="dlRev">depoimentos.js</button>
+    <button class="btn ghost" id="dlFaq">faq.js</button>
+    <button class="btn ghost" id="dlCfg">config.js</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- carrega os dados atuais e o painel -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/produtos.js"></script>
+  <script src="assets/js/depoimentos.js"></script>
+  <script src="assets/js/faq.js"></script>
+  <script src="assets/js/painel.js"></script>
+</body>
+</html>

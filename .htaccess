@@ -1,0 +1,53 @@
+# ============================================================
+#  Cloud Pods — configuração do servidor (Hostinger / Apache)
+# ============================================================
+
+# --- Sem listagem de diretórios ---
+Options -Indexes
+
+# --- Força HTTPS ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Cabeçalhos de segurança ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; base-uri 'self'; frame-ancestors 'self'; object-src 'none'; form-action 'self'"
+  # Remove assinaturas do servidor
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
+</IfModule>
+
+# --- Não expor a versão do Apache ---
+ServerSignature Off
+
+# --- Compressão (gzip) ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Cache dos assets estáticos ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# --- Bloqueia acesso a arquivos sensíveis ---
+<FilesMatch "(^\.|\.(bak|config|ini|log|sh|md)$)">
+  Require all denied
+</FilesMatch>
+
+# --- Páginas de erro voltam para a home ---
+ErrorDocument 404 /index.html
