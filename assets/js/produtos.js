@@ -10,7 +10,7 @@ window.PRODUTOS = [
     "badge": "",
     "destaque": true,
     "sabores": [
-      "Ice Mint",
+      "Icy Mint",
       "Sakura Grape",
       "Watermelon Ice",
       "Strawberry Kiwi",
@@ -21,7 +21,7 @@ window.PRODUTOS = [
   },
   {
     "id": "ignite-v250",
-    "nome": "Ignite V250 — 25.000 Puffs 𝗘𝗦𝗚𝗢𝗧𝗔𝗗𝗢",
+    "nome": "Ignite V250 — 25.000 Puffs",
     "descricao": "O modelo mais atemporal que existe, nosso V250, modelo mais bem desenvolvido da marca. Qualidade IGNITE.",
     "imagem": "assets\\img\\ignite-v250.png",
     "precoDe": 119.99,
@@ -29,9 +29,16 @@ window.PRODUTOS = [
     "badge": "TOP 1",
     "destaque": true,
     "sabores": [
-      "ESGOTADO!"
+      "Icy Mint",
+      "Menthol",
+      "Grape Ice",
+      "Green Apple",
+      "Watermelon Ice",
+      "Strawberry Ice",
+      "Strawberry Kiwi",
+      "Pineapple Ice"
     ],
-    "ativo": true
+    "ativo": false
   },
   {
     "id": "produto-5",
@@ -60,7 +67,7 @@ window.PRODUTOS = [
     "sabores": [
       "ESGOTADO!"
     ],
-    "ativo": true
+    "ativo": false
   },
   {
     "id": "ignite-v400",
@@ -74,6 +81,6 @@ window.PRODUTOS = [
     "sabores": [
       "ESGOTADO!"
     ],
-    "ativo": true
+    "ativo": false
   }
 ];
