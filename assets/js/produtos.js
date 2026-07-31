@@ -20,7 +20,7 @@ window.PRODUTOS = [
     id: "ignite-v250",
     nome: "Ignite V250 — 25.000 Puffs",
     descricao: "Pod descartável de alta duração, até 25.000 puffs, com desempenho estável e sabor consistente do começo ao fim.",
-    imagem: "assets/img/ignite-v250.jpg",
+    imagem: "assets/img/ignite-v250.png",
     precoDe: 109.99,
     preco: 99.99,
     badge: "",
