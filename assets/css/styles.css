@@ -499,7 +499,7 @@ ul { list-style: none; padding: 0; }
   .trust-item { font-size: .84rem; }
   .about-card { padding-inline: 18px; }
   .row-2 { grid-template-columns: 1fr; }
-  .card-media img { transform: translateX(-16px); }
+  .card-media img { transform: translateX(-20px); }
 
   .modal-backdrop { padding-bottom: env(safe-area-inset-bottom); }
   .modal { max-height: calc(100dvh - env(safe-area-inset-top)); }
