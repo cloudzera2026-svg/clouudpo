@@ -7,7 +7,7 @@ window.PRODUTOS = [
     "imagem": "assets\\img\\elfbar-bc15k.png",
     "precoDe": 89.99,
     "preco": 69.99,
-    "badge": "MAIS VENDIDOS",
+    "badge": "",
     "destaque": true,
     "sabores": [
       "Ice Mint",
@@ -26,7 +26,7 @@ window.PRODUTOS = [
     "imagem": "assets\\img\\ignite-v250.png",
     "precoDe": 119.99,
     "preco": 99.99,
-    "badge": "MAIS VENDIDOS",
+    "badge": "TOP 1",
     "destaque": true,
     "sabores": [
       "ESGOTADO!"
@@ -55,7 +55,7 @@ window.PRODUTOS = [
     "imagem": "assets\\img\\elfbar-king-40k.png",
     "precoDe": 124.99,
     "preco": 114.99,
-    "badge": "QUERIDINHO",
+    "badge": "",
     "destaque": false,
     "sabores": [
       "ESGOTADO!"
@@ -69,7 +69,7 @@ window.PRODUTOS = [
     "imagem": "assets\\img\\ignite-v400.png",
     "precoDe": 124.99,
     "preco": 114.99,
-    "badge": "DOIS SABORES",
+    "badge": "",
     "destaque": false,
     "sabores": [
       "ESGOTADO!"
