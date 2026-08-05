@@ -12,9 +12,7 @@ window.PRODUTOS = [
     "sabores": [
       "Icy Mint",
       "Sakura Grape",
-      "Watermelon Ice",
       "Strawberry Kiwi",
-      "Strawberry Watermelon",
       "Peach Mango Watermelon"
     ],
     "ativo": true
@@ -29,14 +27,8 @@ window.PRODUTOS = [
     "badge": "TOP 1",
     "destaque": true,
     "sabores": [
-      "Icy Mint",
       "Menthol",
-      "Grape Ice",
-      "Green Apple",
-      "Watermelon Ice",
-      "Strawberry Ice",
-      "Strawberry Kiwi",
-      "Pineapple Ice"
+      "Green Apple"
     ],
     "ativo": true
   },
@@ -81,7 +73,8 @@ window.PRODUTOS = [
     "badge": "",
     "destaque": false,
     "sabores": [
-      "ESGOTADO!"
+      "Grape Ice + Watermelon Ice",
+      "Cherry Ice + Watermelon Ice"
     ],
     "ativo": true
   }
