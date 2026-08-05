@@ -1,6 +1,10 @@
 /* FAQ — gerado pelo painel */
 window.FAQ = [
   {
+    "q": "Como finalizo a minha compra?",
+    "a": "Após preencher os dados do seu pedido, você será redirecionado ao nosso WhatsApp para prosseguir com o pagamento."
+  },
+  {
     "q": "Quanto custa a entrega?",
     "a": "Depende da sua região! Faremos a cotação conforme o endereço informado, trabalhamos com Entrega Expressa (envio em minutos via app com rastreio no WhatsApp)"
   },
