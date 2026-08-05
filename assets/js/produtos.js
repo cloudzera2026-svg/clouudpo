@@ -38,7 +38,7 @@ window.PRODUTOS = [
       "Strawberry Kiwi",
       "Pineapple Ice"
     ],
-    "ativo": false
+    "ativo": true
   },
   {
     "id": "produto-5",
@@ -51,27 +51,29 @@ window.PRODUTOS = [
       "Watermelon Ice",
       "Coconut Strawberry Ice"
     ],
-    "ativo": true,
+    "ativo": false,
     "precoDe": 139.99,
     "badge": "NOVO"
   },
   {
     "id": "elfbar-king-40k",
-    "nome": "Elfbar King — 40.000 Puffs 𝗘𝗦𝗚𝗢𝗧𝗔𝗗𝗢",
+    "nome": "Elfbar TE — 30.000 Puffs",
     "descricao": "O queridinho da marca, modelo atemporal, marcando época. Qualidade ELFBAR.",
-    "imagem": "assets\\img\\elfbar-king-40k.png",
-    "precoDe": 124.99,
-    "preco": 114.99,
+    "imagem": "assets\\img\\elfbar-te-30k.png",
+    "precoDe": 109.99,
+    "preco": 99.99,
     "badge": "",
     "destaque": false,
     "sabores": [
-      "ESGOTADO!"
+      "Strawberry Ice",
+      "Watermelon Ice",
+      "Bubbaloo Grape"
     ],
-    "ativo": false
+    "ativo": true
   },
   {
     "id": "ignite-v400",
-    "nome": "Ignite V400 Mix — 40.000 Puffs 𝗘𝗦𝗚𝗢𝗧𝗔𝗗𝗢",
+    "nome": "Ignite V400 Mix — 40.000 Puffs",
     "descricao": "Dual-Flavor: Dois sabores em um só dispositivo. Qualidade IGNITE.",
     "imagem": "assets\\img\\ignite-v400.png",
     "precoDe": 124.99,
@@ -81,6 +83,6 @@ window.PRODUTOS = [
     "sabores": [
       "ESGOTADO!"
     ],
-    "ativo": false
+    "ativo": true
   }
 ];
