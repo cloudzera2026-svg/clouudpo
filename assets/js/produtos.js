@@ -2,12 +2,12 @@
 window.PRODUTOS = [
   {
     "id": "elfbar-bc15k",
-    "nome": "Elfbar BC15K — 15.000 Puffs",
+    "nome": "Elfbar BC — 15.000 Puffs",
     "descricao": "A linha custo beneficio da marca, para você que procura a melhor opção e preço baixo. Qualidade ELFBAR.",
     "imagem": "assets\\img\\elfbar-bc15k.png",
     "precoDe": 89.99,
     "preco": 69.99,
-    "badge": "",
+    "badge": "+ VENDIDO",
     "destaque": true,
     "sabores": [
       "Icy Mint",
@@ -50,7 +50,7 @@ window.PRODUTOS = [
   {
     "id": "elfbar-king-40k",
     "nome": "Elfbar TE — 30.000 Puffs",
-    "descricao": "O queridinho da marca, modelo atemporal, marcando época. Qualidade ELFBAR.",
+    "descricao": "O queridinho da marca, modelo fora de série, marcando época. Qualidade ELFBAR.",
     "imagem": "assets\\img\\elfbar-te-30k.png",
     "precoDe": 109.99,
     "preco": 99.99,
